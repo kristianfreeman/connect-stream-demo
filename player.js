@@ -19,6 +19,7 @@ function initializePlayer() {
 
     document.getElementById("stream-player").style.display = "block";
     document.getElementById("processing-notice").style.display = "none";
+    document.getElementById("loading-placeholder").style.display = "none";
   });
 }
 
