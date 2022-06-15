@@ -31,36 +31,7 @@
     <div style="width:500px;position: relative; padding-top: 100%;" id="embed-container"></div>
   </div>
   <script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>
-  <script>
-    var path = window.location.pathname;
-    //let path = "/video/ab1963c8ec533feb777df6f778716c7a0";
-    let pollTimer;
-    if (path.indexOf('/video/') !== -1) {
-      initializePlayer();
-      pollTimer = setInterval(initializePlayer, 5000);
-    }
-    function initializePlayer() {
-      console.log("initializing");
-      document.getElementById("up-wrap").style.display = "none";
-      document.getElementById("player-container").style.display = "block";
-      const videoId = path.replace("/video/", "");
-
-      document.getElementById("embed-container").innerHTML = '<iframe id="stream-player" src="https://iframe.videodelivery.net/' + videoId + '" style="display:none;border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>';
-      const player = Stream(document.getElementById('stream-player'));
-      player.addEventListener('error', () => {
-        document.getElementById("stream-player").style.display = "none";
-        document.getElementById("processing-notice").style.display = "block";
-      });
-      player.addEventListener('durationchange', () => {
-        console.log('can play!');
-        clearInterval(pollTimer);
-
-        document.getElementById("stream-player").style.display = "block";
-        document.getElementById("processing-notice").style.display = "none";
-
-      });
-    }
-  </script>
+  <script src="/player.js"></script>
 
 </body>
 
