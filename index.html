@@ -1,11 +1,67 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <script src="script.js"></script>
-    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
-  </head>
-  <body>
-    <h1>Hello there!</h1>
-    <a href="/me.html">My other page</a>
-  </body>
+
+<head>
+  <title>Share-a-video</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script src="/upload.js"></script>
+</head>
+
+<body>
+  <div id="up-wrap">
+    <h2>Share-a-video</h2>
+
+    <!-- (A) PROGRESS BAR -->
+    <div id="up-progress">
+      <div id="up-bar"></div>
+      <div id="up-percent">0%</div>
+    </div>
+
+    <!-- (B) FILE PICKER -->
+    <input type="file" id="up-file" disabled />
+    <label for="up-file" id="up-label">
+      Select Video
+    </label>
+  </div>
+  <div id="player-container" style="display:none;width:500px;">
+    <div id='processing-notice'>
+      <p>Video is processing...</p>
+    </div>
+    <img src="https://i.pinimg.com/originals/04/3b/7a/043b7a72e6f3fd332bdf88e94f7ecff3.gif">
+    <div style="width:500px;position: relative; padding-top: 100%;" id="embed-container"></div>
+  </div>
+  <script src="https://embed.cloudflarestream.com/embed/sdk.latest.js"></script>
+  <script>
+    var path = window.location.pathname;
+    //let path = "/video/ab1963c8ec533feb777df6f778716c7a0";
+    let pollTimer;
+    if (path.indexOf('/video/') !== -1) {
+      initializePlayer();
+      pollTimer = setInterval(initializePlayer, 5000);
+    }
+    function initializePlayer() {
+      console.log("initializing");
+      document.getElementById("up-wrap").style.display = "none";
+      document.getElementById("player-container").style.display = "block";
+      const videoId = path.replace("/video/", "");
+
+      document.getElementById("embed-container").innerHTML = '<iframe id="stream-player" src="https://iframe.videodelivery.net/' + videoId + '" style="display:none;border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>';
+      const player = Stream(document.getElementById('stream-player'));
+      player.addEventListener('error', () => {
+        document.getElementById("stream-player").style.display = "none";
+        document.getElementById("processing-notice").style.display = "block";
+      });
+      player.addEventListener('durationchange', () => {
+        console.log('can play!');
+        clearInterval(pollTimer);
+
+        document.getElementById("stream-player").style.display = "block";
+        document.getElementById("processing-notice").style.display = "none";
+
+      });
+    }
+  </script>
+
+</body>
+
 </html>

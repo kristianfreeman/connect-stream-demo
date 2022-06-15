@@ -1,0 +1,80 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* (A) WRAPPER */
+#up-wrap,
+#up-wrap * {
+  font-family: arial, sans-serif;
+  box-sizing: border-box;
+}
+
+#up-wrap {
+  max-width: 400px;
+  padding: 20px;
+  margin: 20px;
+  background: #fbfbfb;
+}
+
+#up-wrap h2 {
+  margin: 0 0 15px 0;
+}
+
+/* (B) PROGRESS BAR */
+#up-progress,
+#up-bar,
+#up-percent {
+  height: 30px;
+}
+
+#up-progress {
+  position: relative;
+  background: #fff;
+}
+
+#up-bar {
+  background: #d3e3ff;
+  width: 0;
+  transition: width 0.5s;
+}
+
+#up-percent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* (C) FILE PICKER */
+#up-file {
+  display: none;
+}
+
+#up-label {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  color: #fff;
+  border: 1px solid #dfdfdf;
+  background: #296cd0;
+  cursor: pointer;
+}
+
+#up-file:disabled~#up-label {
+  background: #b1b1b1;
+}
+
+div#processing-notice {
+  background: #fbfbfb;
+  padding: 10px 20px;
+  margin: 20px;
+}
+
+/* (X) DOES NOT MATTER */
+body {
+  padding: 0;
+  margin: 0;
+}
