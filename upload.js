@@ -1,5 +1,5 @@
 async function fetchUploadToken() {
-  let response = await fetch('https://connect-london-demo.zaid-stream-demo.workers.dev/token');
+  let response = await fetch('/token');
   let data = await response.text();
   console.log(data);
   return data;
