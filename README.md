@@ -14,26 +14,24 @@ By the end of this lab you will have:
 
 Stream is an enterprise-scale API that lets Cloudflare customers build serverless apps with minimal engineering effort and cost. 
 
-```{admonition} Learn More about Cloudflare Stream!
-:class: note
+<details>
+<summary>Learn More about Cloudflare Stream!</summary>
 Check out the [Cloudflare Homepage](https://www.cloudflare.com/products/cloudflare-stream/) to learn more
-```
+</details>
 
 ## Exploring the Stream dashboard
 
 The Stream dashboard allows you to manage, view and upload videos without needing to write code. The Dashboard also provides example  cURL commands for common operations, helping you fast-track app development.
 
-![Dashboard](./screencaps/stream-demo-0.png)
+![Dashboard](./.github/stream-demo-0.png)
 
 In our workshop, we'll be working with some example code to show how you can quickly build a video sharing app with Workers and Stream. The mini app will enable users to upload videos using Cloudflare Workers and the Stream API. But the dashboard remains a great way to understand what's being uploaded to your Stream account.
 
-![Stream demo](./screencaps/stream-demo-1.png)
+![Stream demo](./.github/stream-demo-1.png)
 
 Visit [dash.cloudflare.com/profile/api-tokens](https://dash.cloudflare.com/profile/api-tokens) and select "Create Token". Use the below screenshot as an example of how to configure the token -- specifically, the "Stream - Read" and "Stream - Edit" settings.
 
-![Stream API Token settings](./screencaps/stream-demo-2.png)
-
-More on dash
+![Stream API Token settings](./.github/stream-demo-2.png)
 
 ## Understanding Stream Direct Uploads
 
@@ -83,10 +81,10 @@ data.append("file", file);
 xhr.open("POST", uploadToken);
 ```
 
-```{admonition} Uploads larger than 200mb
-:class: note
+<details>
+<summary>Uploads larger than 200mb</summary>
 The _Basic_ upload format seen in this workshop will support video files up to 200mb. For larger files, use the `tus` protocol, as [described in our documentation](https://developers.cloudflare.com/stream/uploading-videos/direct-creator-uploads#using-tus-recommended-for-videos-over-200mb).
-```
+</details>
 
 ## How to use the example code
 
@@ -94,7 +92,7 @@ This example code is designed to give you a starting point to build applications
 
 For the complete open-source code, check out the [repo on GitHub](https://github.com/codewithkristian/connect-stream-demo/).
 
-```{admonition} LAB 4 COMPLETE! 
-:class: note
+<details>
+<summary>LAB 4 COMPLETE!</summary>
 You have successfully Completed Lab 4 - Cloudflare Stream. Next, [check out the documentation](https://developers.cloudflare.com/stream/) to learn more about what you can build with Stream.
-```
+</details>
